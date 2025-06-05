@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import "./button.css";
 
-const Button = ({ children, type = "btn__primary" }) => {
+function Button({ onClick, children, variant = "btn__primary" }) {
   return (
-    <button className={`btn ${type}`}>{children}</button> 
+    <button className={`btn ${variant}`} onClick={onClick}>
+      {children}
+    </button>
   );
-};
+}
 
 export default Button;

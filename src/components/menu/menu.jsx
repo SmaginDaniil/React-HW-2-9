@@ -1,15 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import "./menu.css";
 import Button from "../button/button.jsx";
 
-const Menu = () => {
-  return (
-    <div className="main_to_choose_container">
-      <Button type="btn__secondary">Desert</Button>
-      <Button type="btn__secondary">Dinner</Button>
-      <Button type="btn__secondary">Breakfast</Button>
-    </div>
-  );
-};
+class Menu extends Component {
+  render() {
+    return (
+      <div className="main_to_choose_container">
+        <Button variant="btn__secondary">Breakfast</Button>
+        <Button variant="btn__secondary">Dinner</Button>
+        <Button variant="btn__secondary">Dessert</Button>
+      </div>
+    );
+  }
+}
 
 export default Menu;
