@@ -1,16 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import "./tooltip.css";
 
-class Tooltip extends Component {
-  render() {
-    const { text, children, component: Tag = "span" } = this.props;
+function Tooltip({ text, children, as: Tag = "span" }) {
     return (
-      <Tag className="tooltip">
-        <span className="tooltipText">{text}</span>
-        {children}
-      </Tag>
+        <Tag className="tooltip">
+            {children}
+            <span className="tooltipText">{text}</span>
+        </Tag>
     );
-  }
 }
 
-export default Tooltip;
+export default React.memo(Tooltip);
