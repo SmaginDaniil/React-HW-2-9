@@ -1,0 +1,56 @@
+.main-home {
+  background: url("../public/home.png") center/cover no-repeat;
+  padding: 100px 120px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.text-accent {
+  color: #35b8be;
+}
+
+.main-title {
+  margin-bottom: 26px;
+}
+
+.text-regular {
+  font: 400 16px/24px 'inherit';
+  letter-spacing: 0.32px;
+  color: #546285;
+}
+
+.subtitle {
+  max-width: 540px;
+  margin-bottom: 52px;
+}
+
+.text-large {
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: 1.8px;
+}
+
+.trustpilot-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.trustpilot-logo {
+  width: 82px;
+  height: 18px;
+  color: #000;
+}
+
+.rating-text {
+  font: 400 16px/20px 'inherit';
+  letter-spacing: 0;
+  color: #08090a;
+}
+
+.home-btn {
+  margin-bottom: 40px;
+}

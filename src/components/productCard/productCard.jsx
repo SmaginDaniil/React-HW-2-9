@@ -3,9 +3,9 @@ import "./productCard.css";
 import Button from "../button/button.jsx";
 
 function ProductCard({ productId, title, price, description, image, onAdd }) {
-    const amountRef = useRef();
+    const amountRef = useRef(1);
 
-    const handleAddToCart = () => {
+    const handleAdd = () => {
         onAdd({
             productId,
             title,
@@ -19,9 +19,7 @@ function ProductCard({ productId, title, price, description, image, onAdd }) {
     return (
         <div className="product_card">
             <img src={image} alt={title} className="prod_img" />
-
             <div className="price highlight">${Number(price).toFixed(2)}</div>
-
             <div className="product_info">
                 <div className="title">{title}</div>
                 <div className="description common_font">{description}</div>
@@ -32,9 +30,8 @@ function ProductCard({ productId, title, price, description, image, onAdd }) {
                         defaultValue={1}
                         className="amount"
                         ref={amountRef}
-                        aria-label="Quantity"
                     />
-                    <Button onClick={handleAddToCart}>
+                    <Button onClick={handleAdd}>
                         Add to cart
                     </Button>
                 </div>
@@ -43,4 +40,4 @@ function ProductCard({ productId, title, price, description, image, onAdd }) {
     );
 }
 
-export default React.memo(ProductCard);
+export default ProductCard;

@@ -1,22 +1,28 @@
 .btn {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 147px;
-    height: 52px;
     background-color: transparent;
     border: 1px solid #61728333;
     border-radius: 6px;
     color: black;
+    display: flex;
     font-size: 16px;
     font-weight: 400;
+    height: 52px;
+    justify-content: center;
     letter-spacing: 0;
     line-height: 20px;
+    width: 147px;
+}
+
+
+.btn--large {
+    width: 193px;
+    height: 60px;
 }
 
 .btn__primary {
-    color: white;
     background-color: #35B8BE;
+    color: white;
 }
 
 .btn__primary:hover {
@@ -24,11 +30,11 @@
 }
 
 .btn__secondary  {
-    color:#222;
     background-color: transparent;
+    color:#222;
 }
 
 .btn__secondary:hover {
-    color: white;
     background-color: #35B8BE;
+    color: white;
 }
