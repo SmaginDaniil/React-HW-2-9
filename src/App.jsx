@@ -1,51 +1,40 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Header from "./components/header/header.jsx";
 import Main from "./components/main/main.jsx";
 import Footer from "./components/footer/footer.jsx";
 import "./App.css";
 
-class App extends Component {
-  state = {
-    cartItems: {},
-    totalQuantity: 0,
-  };
+function App() {
+    const [cartItems, setCartItems] = useState({});
+    const [totalQuantity, setTotalQuantity] = useState(0);
 
-  handleAddToCart = (product) => {
-    this.setState((prevState) => {
-      const cartItems = { ...prevState.cartItems };
-      const id = product.productId || product.id;
-      const quantity = Number(product.quantity);
+    const handleAddToCart = (product) => {
+        const { productId, quantity } = product;
+        const qty = Number(quantity);
 
-      if (cartItems[id]) {
-        cartItems[id] = {
-          ...cartItems[id],
-          quantity: cartItems[id].quantity + quantity,
-        };
-      } else {
-        cartItems[id] = {
-          ...product,
-          quantity,
-        };
-      }
+        setCartItems(prev => {
+            const items = { ...prev };
+            if (items[productId]) {
+                items[productId] = {
+                    ...items[productId],
+                    quantity: items[productId].quantity + qty
+                };
+            } else {
+                items[productId] = { ...product, quantity: qty };
+            }
+            return items;
+        });
 
-      return {
-        cartItems,
-        totalQuantity: prevState.totalQuantity + quantity,
-      };
-    });
-  };
-
-  render() {
-    const { totalQuantity } = this.state;
+        setTotalQuantity(q => q + qty);
+    };
 
     return (
-      <>
-        <Header totalQuantity={totalQuantity} />
-        <Main onAddToCart={this.handleAddToCart} />
-        <Footer />
-      </>
+        <>
+            <Header totalQuantity={totalQuantity} />
+            <Main onAddToCart={handleAddToCart} />
+            <Footer />
+        </>
     );
-  }
 }
 
 export default App;

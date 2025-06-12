@@ -1,53 +1,46 @@
-import React, { Component } from "react";
+import React, { useRef } from "react";
 import "./productCard.css";
 import Button from "../button/button.jsx";
 
-class ProductCard extends Component {
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
+function ProductCard({ productId, title, price, description, image, onAdd }) {
+    const amountRef = useRef();
 
-  render() {
-    const { productId, title, price, description, image, onAdd } = this.props;
+    const handleAddToCart = () => {
+        onAdd({
+            productId,
+            title,
+            price,
+            description,
+            image,
+            quantity: amountRef.current.value,
+        });
+    };
 
     return (
-      <div className="product_card">
-        <img src={image} alt="product" className="prod_img" />
+        <div className="product_card">
+            <img src={image} alt={title} className="prod_img" />
 
-        <div className="price highlight">${parseFloat(price).toFixed(2)}</div>
+            <div className="price highlight">${Number(price).toFixed(2)}</div>
 
-        <div className="product_info">
-          <div className="title">{title}</div>
-
-          <div className="description common_font">{description}</div>
-          <div className="add_to_cart">
-            <input
-              type="number"
-              defaultValue="1"
-              min="1"
-              className="amount"
-              ref={this.inputRef}
-            />
-            <Button
-              onClick={() =>
-                onAdd({
-                  productId,
-                  title,
-                  price,
-                  description,
-                  image,
-                  quantity: this.inputRef.current.value,
-                })
-              }
-            >
-              Add to cart
-            </Button>
-          </div>
+            <div className="product_info">
+                <div className="title">{title}</div>
+                <div className="description common_font">{description}</div>
+                <div className="add_to_cart">
+                    <input
+                        type="number"
+                        min={1}
+                        defaultValue={1}
+                        className="amount"
+                        ref={amountRef}
+                        aria-label="Quantity"
+                    />
+                    <Button onClick={handleAddToCart}>
+                        Add to cart
+                    </Button>
+                </div>
+            </div>
         </div>
-      </div>
     );
-  }
 }
 
-export default ProductCard;
+export default React.memo(ProductCard);

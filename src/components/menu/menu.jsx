@@ -1,17 +1,23 @@
-import React, { Component } from "react";
-import "./menu.css";
-import Button from "../button/button.jsx";
+import React, { memo } from 'react';
+import './menu.css';
+import Button from '../button/button.jsx';
 
-class Menu extends Component {
-  render() {
+function Menu({ onCategoryClick, selectedCategory }) {
+    const categories = ['Dessert', 'Dinner', 'Breakfast'];
+
     return (
-      <div className="main_to_choose_container">
-        <Button variant="btn__secondary">Breakfast</Button>
-        <Button variant="btn__secondary">Dinner</Button>
-        <Button variant="btn__secondary">Dessert</Button>
-      </div>
+        <div className="main_to_choose_container">
+            {categories.map(category => (
+                <Button
+                    key={category}
+                    type={selectedCategory === category ? "btn__primary" : "btn__secondary"}
+                    onClick={() => onCategoryClick(category)}
+                >
+                    {category}
+                </Button>
+            ))}
+        </div>
     );
-  }
 }
 
-export default Menu;
+export default memo(Menu);
