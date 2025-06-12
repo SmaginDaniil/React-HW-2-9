@@ -17,14 +17,14 @@
 }
 
 .footer_down_right {
-  align-items: center;
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 
 .footer_icon {
-  height: 40px;
   width: 40px;
+  height: 40px;
 }
 
 .footer_logo {
@@ -37,36 +37,36 @@
 }
 
 .line {
-  background-color: #7e828f17;
   height: 1px;
+  background-color: #7e828f17;
   margin-bottom: 72px;
 }
 
 .takeaway_text {
+  max-width: 246px;
   color: #546285;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.36px;
   line-height: 27px;
   margin-bottom: 100px;
-  max-width: 246px;
 }
 
 .common_font a {
+  color: #546285;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.32px;
-  color: #546285;
 }
 
 .footer__column--uppercase {
+  color: black;
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: black;
 }
 
 .container_down {

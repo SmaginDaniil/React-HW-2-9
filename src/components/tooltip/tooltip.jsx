@@ -1,13 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import "./tooltip.css";
 
-const Tooltip = ({ text, children, component: Component = "span" }) => {
-  return (
-    <Component className="tooltip">
-      {children}
-      <span className="tooltipText">{text}</span>
-    </Component>
-  );
-};
+class Tooltip extends Component {
+  render() {
+    const { text, children, component: Tag = "span" } = this.props;
+    return (
+      <Tag className="tooltip">
+        <span className="tooltipText">{text}</span>
+        {children}
+      </Tag>
+    );
+  }
+}
 
 export default Tooltip;
