@@ -1,13 +1,14 @@
 import React from "react";
 import "./button.css";
 
-function Button({ children, type = "btn__primary", onClick }) {
-    const className = `btn ${type}`;
+
+const Button = ({ children, type = "btn__primary", onClick }) => {
     return (
-        <button className={className} onClick={onClick} type="button">
+        <button className={`btn ${type}`} onClick={onClick}>
             {children}
         </button>
     );
-}
+};
 
-export default React.memo(Button);
+
+export default Button;

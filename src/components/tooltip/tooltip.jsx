@@ -10,4 +10,4 @@ function Tooltip({ text, children, as: Tag = "span" }) {
     );
 }
 
-export default React.memo(Tooltip);
+export default Tooltip;

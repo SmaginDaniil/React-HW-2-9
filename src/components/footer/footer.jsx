@@ -1,17 +1,12 @@
 import React from "react";
 import logo from "../../assets/logosvg.svg";
-import InstagramIcon from "../../assets/Instagram.svg";
-import TwitterIcon from "../../assets/Twitter.svg";
-import YoutubeIcon from "../../assets/Youtube.svg";
+import Instagram from "../../assets/Instagram.svg";
+import Twitter from "../../assets/Twitter.svg";
+import Youtube from "../../assets/Youtube.svg";
 import './footer.css';
 
-function Footer() {
-    const externalLinks = [
-        { label: "Style Guide", url: "https://www.google.com/" },
-        { label: "Changelog", url: "https://www.google.com/" },
-        { label: "Licence", url: "https://www.google.com/" },
-        { label: "Webflow University", url: "https://www.google.com/" },
-    ];
+const Footer = () => {
+    const googleLink = "https://www.google.com/";
 
     return (
         <footer className="footer">
@@ -25,15 +20,17 @@ function Footer() {
                 <div className="footer_up_right">
                     <div className="footer_column common_font">
                         <p className="footer__column--uppercase">COMPANY</p>
-                        {["Home", "Order", "FAQ", "Contact"].map((item) => (
-                            <a href="#" key={item}>{item}</a>
-                        ))}
+                        <a href="#">Home</a>
+                        <a href="#">Order</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Contact</a>
                     </div>
                     <div className="footer_column common_font">
                         <p className="footer__column--uppercase">TEMPLATE</p>
-                        {externalLinks.map(link => (
-                            <a href={link.url} key={link.label} target="_blank" rel="noopener noreferrer">{link.label}</a>
-                        ))}
+                        <a href={googleLink}>Style Guide</a>
+                        <a href={googleLink}>Changelog</a>
+                        <a href={googleLink}>Licence</a>
+                        <a href={googleLink}>Webflow University</a>
                     </div>
                     <div className="footer_column common_font">
                         <p className="footer__column--uppercase">FLOWBASE</p>
@@ -49,13 +46,13 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer_down_right">
-                    {[InstagramIcon, TwitterIcon, YoutubeIcon].map((icon, idx) => (
-                        <img src={icon} alt="Social Icon" className="footer_icon" key={idx} />
-                    ))}
+                    <img src={Instagram} alt="Instagram" className="footer_icon" />
+                    <img src={Twitter} alt="Twitter" className="footer_icon" />
+                    <img src={Youtube} alt="YouTube" className="footer_icon" />
                 </div>
             </div>
         </footer>
     );
-}
+};
 
-export default React.memo(Footer);
+export default Footer;

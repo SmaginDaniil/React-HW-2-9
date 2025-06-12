@@ -1,40 +1,50 @@
-import React, { useState } from "react";
-import Header from "./components/header/header.jsx";
-import Main from "./components/main/main.jsx";
-import Footer from "./components/footer/footer.jsx";
-import "./App.css";
+import React, {useState} from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import './App.css';
 
-function App() {
+import MenuPage from "./newPages/menuPage.jsx"
+import HomeMainPage from "./newPages/homemain.jsx"
+import Header from "./components/header/header.jsx";
+import Footer from "./components/footer/footer.jsx";
+const App = () => {
     const [cartItems, setCartItems] = useState({});
     const [totalQuantity, setTotalQuantity] = useState(0);
 
     const handleAddToCart = (product) => {
-        const { productId, quantity } = product;
-        const qty = Number(quantity);
+        const productId = product.id;
+        const productQuantity = Number(product.quantity);
 
-        setCartItems(prev => {
-            const items = { ...prev };
-            if (items[productId]) {
-                items[productId] = {
-                    ...items[productId],
-                    quantity: items[productId].quantity + qty
+        setCartItems(prevItems => {
+            const updatedItems = { ...prevItems };
+            if (updatedItems[productId]) {
+                updatedItems[productId] = {
+                    ...updatedItems[productId],
+                    quantity: updatedItems[productId].quantity + productQuantity
                 };
             } else {
-                items[productId] = { ...product, quantity: qty };
+                updatedItems[productId] = {
+                    ...product,
+                    quantity: productQuantity
+                };
             }
-            return items;
+            return updatedItems;
         });
 
-        setTotalQuantity(q => q + qty);
+        setTotalQuantity(prevQuantity => prevQuantity + productQuantity);
     };
 
     return (
-        <>
+        <Router>
             <Header totalQuantity={totalQuantity} />
-            <Main onAddToCart={handleAddToCart} />
+            <main>
+                <Routes>
+                    <Route path="/" element={<HomeMainPage />} />
+                    <Route path="/menu" element={<MenuPage onAddToCart={handleAddToCart} totalQuantity={totalQuantity} />} />
+                </Routes>
+            </main>
             <Footer />
-        </>
+        </Router>
     );
-}
+};
 
 export default App;

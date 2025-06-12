@@ -1,23 +1,21 @@
-import React, { memo } from 'react';
+import React from 'react';
 import './menu.css';
 import Button from '../button/button.jsx';
 
-function Menu({ onCategoryClick, selectedCategory }) {
-    const categories = ['Dessert', 'Dinner', 'Breakfast'];
-
+function Menu({ categories, onCategorySelect, selectedCategory }) {
     return (
         <div className="main_to_choose_container">
-            {categories.map(category => (
+            {categories.map((cat) => (
                 <Button
-                    key={category}
-                    type={selectedCategory === category ? "btn__primary" : "btn__secondary"}
-                    onClick={() => onCategoryClick(category)}
+                    key={cat}
+                    type={selectedCategory === cat ? "btn__primary" : "btn__secondary"}
+                    onClick={() => onCategorySelect(cat)}
                 >
-                    {category}
+                    {cat}
                 </Button>
             ))}
         </div>
     );
 }
 
-export default memo(Menu);
+export default React.memo(Menu);
