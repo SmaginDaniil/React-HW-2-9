@@ -1,33 +1,34 @@
-import {FC,useRef} from "react";
+import {FC, useRef} from "react";
 import "./ProductCard.css";
 import Button from "../button/button";
-import Input from "../input/input"
-import {CartProduct, MenuItem} from "../../interface/menuItem";
+import Input from "../Input/Input"
+import {MenuItem} from "../../interface/menuItem";
+import {useDispatch} from "react-redux";
+import {addItem} from "../../shopCard/cartSlice";
 
-interface ProductCardProps extends Omit<MenuItem, 'category'> {
-    onAdd: (item: CartProduct) => void;
-}
 
-const ProductCard:FC<ProductCardProps> = ({ id, meal, price, instructions, img, onAdd }) => {
+const ProductCard: FC<Omit<MenuItem, 'category'>> = ({id, meal, price, instructions, img}) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
+    const dispatch = useDispatch()
     const handleAddClick = () => {
         const quantityValue = inputRef.current?.value ?? "1";
         const quantity = parseInt(quantityValue, 10);
 
-        onAdd({
+        dispatch(addItem({
             id,
             meal,
             price,
             instructions,
             img,
             quantity: isNaN(quantity) ? 1 : quantity,
-        });
+        }))
+
     };
 
     return (
         <div className="product_card">
-            <img src={img} alt="product" className="prod_img" />
+            <img src={img} alt="product" className="prod_img"/>
             <div className="price highlight">${parseFloat(price.toString()).toFixed(2)}</div>
 
             <div className="product_info">

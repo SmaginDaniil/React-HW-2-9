@@ -1,6 +1,6 @@
 import React from 'react';
-import "./menu.css";
-import Button from "../button/button.tsx";
+import "./Menu.css";
+import Button from "../button/button";
 
 
 type MenuProps = {

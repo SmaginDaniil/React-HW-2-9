@@ -1,17 +1,11 @@
 import {FC} from 'react';
-import Main from '../components/main/main.tsx'
-import {CartProduct} from "../interface/menuItem.ts";
+import Main from '../components/main/main';
 
 
-interface MenuPageProps {
-    onAddToCart: (item:CartProduct)=> void;
-    totalQuantity: number;
-}
-
-const MenuPage:FC<MenuPageProps> = ({ onAddToCart, totalQuantity }) => {
+const MenuPage:FC = () => {
     return (
         <main>
-            <Main onAddToCart={onAddToCart} totalQuantity={totalQuantity} />
+            <Main />
         </main>
     );
 };

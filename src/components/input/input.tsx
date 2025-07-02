@@ -1,5 +1,5 @@
 import {forwardRef, InputHTMLAttributes} from 'react';
-import "./input.css"
+import "./Input.css"
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     inputSize?: "small" | "medium";

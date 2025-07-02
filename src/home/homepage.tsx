@@ -1,8 +1,8 @@
 import React from "react";
 import takeaway from "../assets/homeMain.png";
-import Button from "../components/button/button.tsx";
+import Button from "../components/button/button";
+import Rating from "../components/rating/rating"
 import styled from "styled-components";
-import Rating from "../components/rating/rating";
 
 const Wrapper = styled.main`
   background-image: url("/images/homePage_font.png");
