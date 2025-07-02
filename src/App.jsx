@@ -1,14 +1,27 @@
-import React, {useState} from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, {useState,useEffect} from "react";
+import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
 import './App.css';
 
 import MenuPage from "./newPages/menuPage.jsx"
 import HomeMainPage from "./newPages/homemain.jsx"
 import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
+import LoginPage from "./newPages/loginPage.jsx";
+import { auth } from "./components/firebase/firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
+
 const App = () => {
     const [cartItems, setCartItems] = useState({});
     const [totalQuantity, setTotalQuantity] = useState(0);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+
+        return () => unsubscribe();
+    }, []);
 
     const handleAddToCart = (product) => {
         const productId = product.id;
@@ -38,8 +51,9 @@ const App = () => {
             <Header totalQuantity={totalQuantity} />
             <main>
                 <Routes>
-                    <Route path="/" element={<HomeMainPage />} />
-                    <Route path="/menu" element={<MenuPage onAddToCart={handleAddToCart} totalQuantity={totalQuantity} />} />
+                    <Route path="/" element={user ? <HomeMainPage /> : <Navigate to="/login" />} />
+                    <Route path="/menu" element={user ? <MenuPage onAddToCart={handleAddToCart} totalQuantity={totalQuantity} /> : <Navigate to="/login" />} />
+                    <Route path="/login" element={<LoginPage />} />
                 </Routes>
             </main>
             <Footer />

@@ -75,7 +75,7 @@ function Main({ onAddToCart }) {
             </div>
 
             {canShowMore && (
-                <Button type="btn__primary" onClick={handleShowMore}>
+                <Button variant="btn__primary" onClick={handleShowMore}>
                     See more
                 </Button>
             )}

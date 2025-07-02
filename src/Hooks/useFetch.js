@@ -16,6 +16,9 @@ const useFetch = (url, options = {}) => {
 
             try {
                 const res = await fetch(url, options);
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch data. Result: ${res.status}`);
+                }
                 const json = await res.json();
                 if (isMounted) {
                     setData(json);
