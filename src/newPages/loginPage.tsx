@@ -1,7 +1,7 @@
 import React from "react";
-import Login from '/src/components/loginPage/login.jsx';
+import Login from '../components/loginPage/login';
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
     return (
         <main>
             <Login />

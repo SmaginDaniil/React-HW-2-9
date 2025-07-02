@@ -5,8 +5,8 @@ import Twitter from "../../assets/Twitter.svg";
 import Youtube from "../../assets/Youtube.svg";
 import './footer.css';
 
-const Footer = () => {
-    const googleLink = "https://www.google.com/";
+const Footer: React.FC = () => {
+    const googleLink : string = "https://www.google.com/";
 
     return (
         <footer className="footer">
